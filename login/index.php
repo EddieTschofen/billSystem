@@ -3,11 +3,10 @@
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
 session_start();
 
-echo $_SESSION['user']."   -   " . $_SESSION['key'];
+// echo $_SESSION['user']."   -   " . $_SESSION['key'];
 
-$loged = $bdd->query('SELECT * FROM Sessions where userID="'.$_SESSION['user'].'" and sessNumber="'.$_SESSION['key'].'"')->fetch();
-echo $loged;
-if($loged){
+$loged = $bdd->query('SELECT * FROM Sessions where userID="'.$_SESSION['user'].'" and sessNumber="'.$_SESSION['key'].'"');
+if($loged->fetch()){
   header('Location: /');
 }
 ?>

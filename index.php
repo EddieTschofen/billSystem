@@ -15,7 +15,7 @@
    </head>
    <body>
       <?php
-        // require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
 
           // header('Location: /login/');
           // echo  __DIR__.'/toolbox/header.php';
