@@ -1,0 +1,27 @@
+body{
+
+}
+
+div.div{
+    /*border : solid black 1px;*/
+    display: inline-block;
+    width : auto;
+}
+
+#personsDiv{
+    /*border : solid black 1px;*/
+    height: 300px;
+    position: relative;
+    /*background-color: green;*/
+}
+
+#ownerDiv{
+    position: absolute;
+    /*background-color: blue;*/
+}
+#tenantDiv{
+    position: absolute;
+    /*background-color: red;*/
+    top : 0px;
+    left : 350px;
+}

@@ -1,0 +1,82 @@
+body{
+  /*background-color: #abcafc;*/
+  text-align: center;
+}
+
+#login{
+  width: 500px;
+  height: 220px;
+
+  display: inline-block;
+
+  background-color: #d8d8d8;
+  padding: 5px;
+
+  position: absolute;
+  top: -25%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+
+  border-radius: 5px;
+  border : solid 1px #9b9b9b;
+
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.formInput{
+  margin: 3px;
+  font-size: 1.2em;
+  border: 1px solid #9b9b9b;
+  border-radius: 7px;
+
+  text-align: center;
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+.loginButton {
+  outline: none;
+
+  margin-top: 1px;
+  border : 0;
+
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.loginButton:hover {
+  outline: none;
+
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.loginButton:active{
+  outline: none;
+}
