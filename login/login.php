@@ -1,8 +1,7 @@
 <?php
 
   // var_dump($_POST);
-  $bdd = new PDO('mysql:host=localhost;dbname=billSystem;charset=utf8', 'billSystemUser', 'billSystemPassword');
-
+  require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
   $username = $_POST['username'];
   $password = md5($_POST['password']);
   // echo $username . " " . $password . "<br/>";
@@ -16,7 +15,10 @@
       $bdd->query('DELETE FROM Sessions WHERE userID="'.$log['id'].'"')->fetch();
     }
     $bdd->query('INSERT INTO Sessions (sessNumber,userID) VALUES ("'.$_SESSION['key'].'","'.$_SESSION['user'].'")')->fetch();
-
+    header('Location: /');
+  }
+  else{
+    header('Location: /login/');
   }
 
   function rand_char($length) {

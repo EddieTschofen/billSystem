@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta http-equiv="Content-Language" content="fr" />
-      <meta name="author" content="Eddie Tschofen" />
-
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <!-- <script src = "index.js"></script> -->
-
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap-select.min.css"/>
+      <?php
+          require $_SERVER['DOCUMENT_ROOT'].'/toolbox/header.php';
+      ?>
       <title>
-         Log in
+         Main
       </title>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    </head>
    <body>
       <?php
-          header('Location: /login/');      
+          // header('Location: /login/');
+          // echo  __DIR__.'/toolbox/header.php';
+          // $dir    = '/';
+          // $files1 = scandir($dir);
+          // $files2 = scandir($dir, 1);
+          //
+          // print_r($files1);
+          // print_r($files2);
       ?>
+      main
   </body>
 </html>
