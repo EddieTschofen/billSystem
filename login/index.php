@@ -1,4 +1,5 @@
 <?php
+/*If already loged redirect to home*/
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
 session_start();
 
