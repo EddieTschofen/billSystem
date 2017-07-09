@@ -1,5 +1,5 @@
 <?php
-
+  require $_SERVER['DOCUMENT_ROOT'].'/toolbox/rand_char.php';
   //log in database
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
   //get POST var
@@ -27,12 +27,5 @@
     header('Location: /login/');
   }
 
-  //generate random char string
-  function rand_char($length) {
-    $random = '';
-    for ($i = 0; $i < $length; $i++) {
-      $random .= chr(mt_rand(33, 126));
-    }
-    return $random;
-  }
+
 ?>

@@ -1,3 +1,8 @@
+<?php
+  require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
+?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -10,6 +15,8 @@
    </head>
    <body>
       <?php
+        // require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
+
           // header('Location: /login/');
           // echo  __DIR__.'/toolbox/header.php';
           // $dir    = '/';
@@ -19,6 +26,5 @@
           // print_r($files1);
           // print_r($files2);
       ?>
-      main
   </body>
 </html>
