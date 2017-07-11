@@ -1,4 +1,5 @@
 <?php
+//header of all pages
 echo '
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Language" content="fr" />

@@ -1,5 +1,5 @@
 <?php
-// echo 'SELECT Users.login FROM Sessions,Users where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Users.id';
+//nav menu on top of pages
 $name = $bdd->query('SELECT Owner.login FROM Sessions,Owner where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Owner.id')->fetch()['login'];
 echo '
 <ul>
