@@ -1,6 +1,6 @@
 <?php
 // echo 'SELECT Users.login FROM Sessions,Users where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Users.id';
-$name = $bdd->query('SELECT Users.login FROM Sessions,Users where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Users.id')->fetch()['login'];
+$name = $bdd->query('SELECT Owner.login FROM Sessions,Owner where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Owner.id')->fetch()['login'];
 echo '
 <ul>
   <li><a class="active" href="#home">Home</a></li>

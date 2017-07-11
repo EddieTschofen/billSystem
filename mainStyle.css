@@ -4,7 +4,11 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #d8d8d8;
+
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
 }
 
 li {
@@ -13,18 +17,21 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #bcbcbc;
+}
+li a:hover{
+  color : black;
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #9ecaed;
 }
 
 .right{
@@ -33,4 +40,38 @@ li a:hover:not(.active) {
 
 #userName{
   color : white;
+}
+
+/*Main*/
+#main{
+  /*background-color: #d8d8d8;*/
+  width: 96%;
+  margin-top: 20px;
+  margin-left:2%;
+  margin-right: 2%;
+  padding: 10px;
+
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 5px #9ecaed;
+
+  font-size: 1.1em;
+}
+
+/*Table*/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

@@ -6,7 +6,7 @@
   $username = $_POST['username'];
   $password = md5($_POST['password']);
   //log: check username and password
-  $log = $bdd->query('SELECT * FROM Users where login="'.$username.'" and password="'.$password.'"')->fetch();
+  $log = $bdd->query('SELECT * FROM Owner where login="'.$username.'" and password="'.$password.'"')->fetch();
   // if successfully loged
   if($log){
     //create session vars
