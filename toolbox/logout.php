@@ -5,5 +5,5 @@
   unset($_SESSION["key"]);
 
   echo 'You have cleaned session';
-  header('Refresh: 1; URL = /');
+  header('Location: /login/');
 ?>

@@ -12,6 +12,6 @@ echo '
 <link rel="stylesheet" href="/mainStyle.css">
 <link rel="stylesheet" href="style.css">
 
-<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
 ';
 ?>

@@ -52,29 +52,11 @@ li a:hover{
   margin-top: 20px;
   margin-left:2%;
   margin-right: 2%;
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
 
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 5px #9ecaed;
 
   font-size: 1.1em;
-}
-
-/*Table*/
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #ddd;
 }

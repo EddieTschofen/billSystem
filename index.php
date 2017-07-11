@@ -25,7 +25,7 @@
           //for each one
           while($res = $query->fetch()){
             //create a table part with the name and address of block
-            echo "<tr><th>".$res['name']."</th><td>".$res['address'].", ".$res['zip']." ".$res['city']."</td></tr>";
+            echo "<tr><th>".$res['name']."</th><th>".$res['address'].", ".$res['zip']." ".$res['city']."</th></tr>";
             //get all the Appartement owned by the user in the block
             $query2 = $bdd->query('select * FROM Flat WHERE ownerID="'.$_SESSION['user'].'" and blockID="'.$res['id'].'"');
             //for each one
@@ -43,11 +43,6 @@
             }
           }
           echo "</table>";
-
-
-          while($res3 = $query3->fetch()){
-            var_dump($res3);
-          }
         ?>
 
       </div>
