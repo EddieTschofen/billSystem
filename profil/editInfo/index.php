@@ -76,6 +76,7 @@
             </tr>
           </table>
           <?php
+            //error message
             switch ($_GET['m']) {
               case 'mdp':
                 echo "<p id='mdp'>Mot de passe érroné</p>";

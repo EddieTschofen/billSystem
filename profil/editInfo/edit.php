@@ -8,7 +8,9 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
 
 $correctPass = $bdd->query('SELECT * FROM Owner WHERE password="'.md5($_POST['ownerPassword']).'" AND id="'.$_SESSION['user'].'"');
 $rep = $correctPass->fetch();
+//check if right password
 if($rep){
+  //update database
   $query = 'UPDATE Owner SET name="'.$_POST['ownerName'].'",
                                 address="'.$_POST['ownerAddress'].'",
                                 zip="'.$_POST['ownerZip'].'",
@@ -20,9 +22,7 @@ if($rep){
                                 IBAN="'.$_POST['ownerIBAN'].'",
                                 BIC="'.$_POST['ownerBIC'].'"
                                 WHERE id="'.$_SESSION['user'].'"';
-  // echo $query;
   $bdd->query($query);
-
   header('Location: /profil/editInfo?m=ok');
 }
 else{

@@ -12,7 +12,8 @@ if($loged->fetch()){
   $bdd->query('UPDATE Sessions SET sessNumber="'.$_SESSION['key'].'" WHERE userID="'.$_SESSION['user'].'"')->fetch();
 }
 else{
+
   //redirect
-  header('Location: /login/');
+  header('Location: /toolbox/logout.php');
 }
 ?>

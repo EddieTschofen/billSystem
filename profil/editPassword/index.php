@@ -19,7 +19,6 @@
       ?>
       <?php
         $profil = $bdd->query('SELECT * from Owner WHERE id="'.$_SESSION['user'].'"')->fetch();
-        // var_dump($profil);
       ?>
       <div id='main'>
         <form action="edit.php" method="post">
@@ -42,6 +41,7 @@
           </tr>
         </table>
       <?php
+        //error message
         switch ($_GET['m']) {
           case 'cmdp':
             echo "<p id='c'>Le mot de passe a été changé</p>";

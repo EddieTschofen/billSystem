@@ -19,7 +19,6 @@
       ?>
       <?php
         $profil = $bdd->query('SELECT * from Owner WHERE id="'.$_SESSION['user'].'"')->fetch();
-        // var_dump($profil);
       ?>
       <div id='main'>
         <table>
