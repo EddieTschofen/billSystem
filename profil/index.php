@@ -29,11 +29,11 @@
           </tr>
           <tr>
             <td>Mot de passe : </td>
-            <td><input type="password" name="ownerPassword" value="xxx" disabled></td>
+            <td><input type="password" name="ownerPassword" value="xxxxxxxxxxxxxxx" disabled></td>
           </tr>
         </table>
         <br/>
-        <button>Editer mot de passe</button><br/><br/>
+        <a href="editPassword/"><button>Editer mot de passe</button></a><br/><br/>
         <table>
           <tr>
             <td>Nom : </td>
@@ -79,10 +79,9 @@
             <td><input type="text" name="ownerBIC" value="<?php echo $profil['BIC'];?>" disabled></td>
           </tr>
         </table>
-
         <br/>
-        <button>Editer informations</button><br/><br/>
-
+        <a href="editInfo/"><button>Editer informations</button></a>
+        <br/><br/>
       </div>
   </body>
 </html>

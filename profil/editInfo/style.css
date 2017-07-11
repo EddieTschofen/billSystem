@@ -1,0 +1,15 @@
+input{
+  margin: 5px;
+}
+
+td{
+  width: 275px;
+}
+
+#ok{
+  color : green;
+}
+
+#mdp{
+  color : red;
+}

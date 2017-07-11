@@ -1,0 +1,15 @@
+input{
+  margin: 5px;
+}
+
+td{
+  width: 275px;
+}
+
+#c{
+  color : green;
+}
+
+#n,#o{
+  color : red;
+}
