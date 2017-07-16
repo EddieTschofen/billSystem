@@ -30,21 +30,23 @@
             $query2 = $bdd->query('select * FROM Flat WHERE ownerID="'.$_SESSION['user'].'" and blockID="'.$res['id'].'"');
             //for each one
             while($res2 = $query2->fetch()){
+              // echo "<tr><td><a href='/appartement/".$res2['id']."'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
+              echo "<tr><td><a href='/appartement?flat=".$res2['id']."'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
               //get the tenant name if there is one
               $res3 = $bdd->query('select * FROM Tenant WHERE id in (select tenantID FROM  Rental Where flatID="'.$res2['id'].'")')->fetch();
               // if there is no tenant
               if(!$res3){
-                echo "<tr><td>Appartement ".$res2['flat_num']."</td><td>"."pas de locataire"."</td></tr>";
+                echo "<td>"."pas de locataire"."</td></tr>";
               }
               //if there is one
               else{
-                echo "<tr><td>Appartement ".$res2['flat_num']."</td><td>".$res3['name']."</td></tr>";
+                // echo "<td><a href='/locataire/".$res3['id']."'>".$res3['name']."</a></td></tr>";
+                echo "<td><a href='/locataire/".$res3['id']."'><div class=\"case\">".$res3['name']."</div></a></td></tr>";
               }
             }
           }
           echo "</table>";
         ?>
-
       </div>
   </body>
 </html>

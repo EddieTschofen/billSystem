@@ -1,5 +1,7 @@
 /*STYLE OF ALL PAGES*/
-
+body{
+  color: black!important;
+}
 
 /*NavBar*/
 ul {
@@ -59,4 +61,42 @@ li a:hover{
   box-shadow: 0 0 5px #9ecaed;
 
   font-size: 1.1em;
+}
+
+/*table*/
+
+/*Table*/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #999;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+
+td a{
+  color : black;
+}
+
+td a:hover{
+  color: black;
+  text-shadow:
+      2px 2px 1px #CFB565,
+      2px 3px 1px #CFB565;
+
+}
+
+.case{
+  height:100%;
+  width:100%;
 }

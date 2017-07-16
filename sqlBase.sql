@@ -116,4 +116,9 @@ INSERT INTO Rental (tenantID,flatID,startDate,ended) VALUES -- AAAA-MM-JJ
 
 -- Transaction content
 
+INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES
+    ("Loyer",1,"2017-07-10",500),
+    ("Loyer",1,"2017-07-10",500);
+
+
 -- INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES

@@ -14,6 +14,6 @@ if($loged->fetch()){
 else{
 
   //redirect
-  header('Location: /toolbox/logout.php');
+  header('Location: /login/');
 }
 ?>

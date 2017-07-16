@@ -25,7 +25,7 @@ if($loged->fetch()){
         <form action="login.php" method="post">
           <input class="formInput" type="text" id="username" name="username" value="" placeholder="username"> <br/>
           <input class="formInput" type="password" id="password" name="password" value="" placeholder="password"> <br/>
-          <input class="loginButton" type="submit" value="Submit">
+          <input class="loginButton" type="submit" value="Se connecter">
         </form>
       </div>
   </body>

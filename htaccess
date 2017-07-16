@@ -1,0 +1,6 @@
+#Fichier .htaccess
+
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^/appartement/index.php$ index.php [L]
