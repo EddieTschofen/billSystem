@@ -6,8 +6,9 @@ echo '
 <meta name="author" content="Eddie Tschofen" />
 
 <script src="/plugin/jquery-3.2.1.min.js"></script>
-<script src="/plugin/jquery-ui-1.12.1/jquery-ui.js"></script>
 
+<link rel="stylesheet" href="/plugin/jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="/plugin/jquery-ui-1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" href="/plugin/bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/plugin/bootstrap-3.3.7/css/bootstrap-select.min.css"/>

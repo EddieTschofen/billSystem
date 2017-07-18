@@ -112,13 +112,17 @@ INSERT INTO Tenant (name,email,phone) VALUES
 -- Rental content
 
 INSERT INTO Rental (tenantID,flatID,startDate,ended) VALUES -- AAAA-MM-JJ
-    (1,1,"2017-01-01",false);
+    (1,1,"2017-01-01",false),
+    (2,2,"2017-01-01",false);
 
 -- Transaction content
 
 INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES
-    ("Loyer",1,"2017-07-10",500),
-    ("Loyer",1,"2017-07-10",500);
+    ("Loyer",1,"2017-07-01",500),
+    ("Loyer",1,"2017-07-02",500),
+    ("Loyer",1,"2017-07-03",500),
+    ("Loyer",1,"2017-07-04",500),
+    ("Loyer",2,"2017-07-10",500);
 
 
 -- INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES

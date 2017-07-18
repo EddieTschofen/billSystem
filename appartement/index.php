@@ -14,8 +14,10 @@
       <title>
          Appartement
       </title>
+
+      <script src="script.js"></script>
    </head>
-   <body>
+   <body onload="init()">
       <?php
         require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
       ?>
@@ -27,7 +29,7 @@
         <fieldset>
           <legend><?php echo $block['name'] ?></legend>
           <?php
-            echo 'Appartement '.$flatInfo['id'].'<br/>';
+            echo 'Appartement <span id="flatID">'.$flatInfo['id'].'</span><br/>';
             echo $block['address'].", ".$block['zip']." ".$block['city'];
           ?>
         </fieldset>
@@ -45,24 +47,11 @@
             echo "<br/><br/>";
           }?>
           <legend>Historique des transactions</legend>
-          <table>
-          <?php
-            $transactions = $bdd->query('SELECT * FROM Transaction ORDER BY transactionDate');
-            while($t = $transactions->fetch()){
-              echo "<tr>";
-              echo "<td class='tdBox'>".$t['transactionDate']."</td>";
-              echo "<td class='titleBox'>".$t['title']."</td>";
-              echo "<td class='amountBox'>".$t['amount']."€</td>";
-              echo "<td class='buttonBox'>";
-              echo '<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
-              echo '<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
-              echo "</td>";
-              echo "</tr>";
-            }
-          ?>
-        </table>
+          <!-- transactions table -->
+          <table id="transactionsTable"></table>
+        <br/>
+        <button onclick="addTransaction()">Ajouter Transaction</button>
         </fieldset>
-
       </div>
   </body>
 </html>
