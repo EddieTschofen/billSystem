@@ -14,7 +14,7 @@ a:hover{
 }
 
 table{
-  width: 35%;
+  width: 45%;
 }
 
 .tdBox{
@@ -31,4 +31,16 @@ table{
 
 .buttonBox{
   width: auto;
+}
+
+.ui-dialog{
+  width: 400px!important;
+}
+
+#nouvelleTransaction table{
+  width:100%;
+}
+
+.err{
+  color : red;
 }
