@@ -16,7 +16,7 @@ if(!$redirect){
       $str .= "<td class='amountBox'>".$t['amount']."€</td>";
       $str .= "<td class='buttonBox'>";
       $str .= '<button type="button" class="btn btn-default" aria-label="Left Align" onclick="deleteTransaction(\''.$t['id'].'\',\''.$t['transactionDate'].'\',\''.$t['title'].'\',\''.$t['amount'].'\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>';
-      $str .= '<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
+      $str .= '<button type="button" class="btn btn-default" aria-label="Left Align" onclick="editTransaction(\''.$t['id'].'\',\''.$t['transactionDate'].'\',\''.$t['title'].'\',\''.$t['amount'].'\')"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>';
       $str .= "</td>";
       $str .= "</tr>";
     }

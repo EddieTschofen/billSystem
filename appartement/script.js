@@ -19,6 +19,23 @@ var dellTransaction = '\
   <p id="dellP"></p>\
 </div>';
 
+//editTransaction dialog content
+var modifyTransaction = '\
+<div id="editTransaction" title="Editer transaction">\
+  <fieldset>\
+    <table>\
+      <tr><td><label>Date : </label> </td><td><input type="text" id="datepickerEdit"></tr>\
+      <tr><td><label>Titre : </label></td><td> <input type="text" name="title" id="titleEdit" value=""></tr>\
+      <tr><td><label>Montant : </label></td><td> <input type="number" min="0" name="amount" id="amountEdit" value=""></tr>\
+      <tr><td colspan=2><input type="radio" id="payableEdit" name="transactionType" value="creance"> \
+      Créance <input type="radio" id="paymentEdit" name="transactionType" value="payment"> Paiement</tr>\
+    </table>\
+    <p style="padding-top:10px;margin:0px;" id="errEdit">Tous les champs sont obligatoire</p>\
+  </fieldset>\
+</div>';
+
+
+
 //on add transaction button
 function addTransaction(){
   emptyNewTransactionDialog();
@@ -35,12 +52,33 @@ function deleteTransaction(id,date,title,amount){
   $("#dellTransaction").dialog('open');
 }
 
+function editTransaction(id,date,title,amount){
+  transactionId = id;
+  // alert(id);
+  // console.log(id + " " + date + " " + title + " " + amount);
+
+  $("#err").removeClass("err");
+  $("#datepickerEdit")[0].value = date;
+  $("#titleEdit")[0].value = title;
+  $("#amountEdit")[0].value = Math.abs(amount);
+  if(amount<0){
+    $("#payableEdit")[0].checked = false;
+    $("#paymentEdit")[0].checked = true;
+  }else{
+    $("#payableEdit")[0].checked = true;
+    $("#paymentEdit")[0].checked = false;
+  }
+  $("#editTransaction").dialog('open');
+
+}
+
 var flatID;
 function init(){
   flatID = $("#flatID").html();
 
   $("#main").append(newTransaction);
   $("#main").append(dellTransaction);
+  $("#main").append(modifyTransaction);
 
   $("#nouvelleTransaction").dialog({
     resizable: false,
@@ -99,6 +137,41 @@ function init(){
     });
 
   $("#dellTransaction").dialog('close');
+
+  $("#editTransaction").dialog({
+    resizable: false,
+    modal: true,
+    buttons: {
+      "Editer": function() {
+        var date = $("#datepickerEdit")[0].value;
+        var title = $("#titleEdit")[0].value;
+        var amount = $("#amountEdit")[0].value;
+        var payable = $("#payableEdit")[0].checked;
+        var payment = $("#paymentEdit")[0].checked;
+        if(payment) amount = -1*(amount);
+        // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
+        if(date != "" && title != "" && amount != "" && (payable || payment)){
+          // console.log("editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId);
+          $.ajax("editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId)
+            .done(function(data) {
+              if(data){
+                refreshTransaction();
+              }
+            });
+
+          emptyNewTransactionDialog();
+          $( this ).dialog( "close" );
+        }
+        else $("#errEdit").addClass("err");
+      },
+      "Annuler": function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+
+  $( "#datepickerEdit" ).datepicker({dateFormat: "yy/mm/dd"});
+  $("#editTransaction").dialog('close');
 
   refreshTransaction();
 }
