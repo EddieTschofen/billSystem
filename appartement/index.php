@@ -27,10 +27,11 @@
             $tenant = $bdd->query('select * FROM Tenant WHERE id in (select tenantID FROM  Rental Where flatID="'.$flatNum.'")')->fetch();
         ?>
         <fieldset>
-          <legend><?php echo $block['name'] ?></legend>
+          <legend id="legendBlock"><?php echo $block['name'] ?></legend>
           <?php
-            echo 'Appartement <span id="flatID">'.$flatInfo['id'].'</span><br/>';
-            echo $block['address'].", ".$block['zip']." ".$block['city'];
+            echo '<span id="flatID" class="invisible">'.$flatInfo['id']."</span>";
+            echo 'Appartement <span id="flatNum">'.$flatInfo['flat_num'].'</span><br/>';
+            echo "<span id='tenantAddressSpan'>".$block['address']."</span>, <span id='tenantZipSpan'>".$block['zip']."</span> <span id='tenantCitySpan'>".$block['city']."</span>";
           ?>
         </fieldset>
         <br/>
@@ -42,8 +43,8 @@
           }
           //if there is one
           else{
-            echo "<legend><a href='/locataire/".$tenant['id']."'>".$tenant['name']."</a></legend>";
-            echo $tenant['phone'];
+            echo "<legend id=\"legendName\"><a href='/locataire/".$tenant['id']."'>".$tenant['name']."</a></legend>";
+            echo "<span id='tenantPhoneSpan'>".$tenant['phone']."</span>";
             echo "<br/><br/>";
           }?>
           <legend>Historique des transactions</legend>
@@ -52,6 +53,7 @@
         <br/>
         <button onclick="addTransaction()">Ajouter Transaction</button>
         </fieldset>
+        <button onclick="createBill()">Editer facture</button>
       </div>
   </body>
 </html>

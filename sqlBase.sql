@@ -86,7 +86,7 @@ CREATE TABLE Sessions
 -- Owner table content
 
 INSERT INTO Owner (name,address,city,zip,email,phone,cell,bankName,IBAN,BIC,login,password) VALUES
-    ("Didier Tschofen","7 Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","0476980662","0613712637","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","didieryat","098f6bcd4621d373cade4e832627b4f6"),
+    ("Didier Tschofen","7, Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","0476980662","0613712637","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","didieryat","098f6bcd4621d373cade4e832627b4f6"),
     ("Didier Tschofen","7 Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","0476980662","0613712637","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","d","d");
 
 -- Apartment_block content

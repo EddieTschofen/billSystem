@@ -41,6 +41,10 @@ table{
   width:100%;
 }
 
+#newBill table{
+  width:100%;
+}
+
 .err{
   color : red;
 }

@@ -8,7 +8,7 @@ echo '
 
 
   <div class="right">
-    <li><a href="/profil">'.$name.'</a></li>
+    <li><a id="login" href="/profil">'.$name.'</a></li>
     <li><a href="/toolbox/logout.php">Se deconnecter</a></li>
   </div>
 </ul>
