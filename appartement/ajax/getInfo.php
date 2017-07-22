@@ -31,7 +31,7 @@ while($t = $r->fetch()){
 
 //stillToPay
 $query = 'SELECT SUM(t.amount) FROM Transaction t, Rental r WHERE
-          r.flatID="1"
+          r.flatID="'.$flatNum.'"
           AND t.rentalID = r.id
           AND t.transactionDate < "2017/07/10"
           ORDER BY transactionDate';

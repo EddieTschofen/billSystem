@@ -104,7 +104,6 @@ function initAdd(){
         if(payment) amount = -1*(amount);
         // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
         if(date != "" && title != "" && amount != "" && (payable || payment)){
-          console.log("addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount);
           $.ajax("ajax/addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
             .done(function(data) {
               if(data){
