@@ -38,7 +38,7 @@ function editTransaction(id,date,title,amount){
 function refreshTransaction(){
     var table = $("#transactionsTable");
     table.html("");
-    $.ajax("getTransactions.php?flat="+flatID)
+    $.ajax("ajax/getTransactions.php?flat="+flatID)
       .done(function(data) {
         if(data === 0){
           // similar behavior as clicking on a link
@@ -105,7 +105,7 @@ function initAdd(){
         // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
         if(date != "" && title != "" && amount != "" && (payable || payment)){
           console.log("addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount);
-          $.ajax("addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
+          $.ajax("ajax/addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -140,7 +140,7 @@ function initDell(){
       modal: true,
       buttons: {
         "Supprimer": function() {
-          $.ajax("supprTransaction.php?id="+transactionId+"&flat="+flatID)
+          $.ajax("ajax/supprTransaction.php?id="+transactionId+"&flat="+flatID)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -188,7 +188,7 @@ function initEdit(){
         // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
         if(date != "" && title != "" && amount != "" && (payable || payment)){
           // console.log("editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId);
-          $.ajax("editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId)
+          $.ajax("ajax/editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -239,6 +239,8 @@ var newBillForm = '\
         <input type="text" name="tenantCity" id="tenantCity" value="">\
         <input type="text" name="tenantPhone" id="tenantPhone" value="">\
         \
+        <input type="text" name="stillToPay" id="stillToPay" value="">\
+        \
         <div id="detailsList"></div>\
       </div>\
       <p style="padding-top:10px;margin:0px;" id="errBill">Tous les champs sont obligatoire (date de fin posterieur a la date de début)</p>\
@@ -262,7 +264,7 @@ function initBill(){
         // console.log($("#datepickerBill1").datepicker("getDate") + " " + $("#datepickerBill2").datepicker("getDate") + " " + $("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"));
         if(numBill != "" && startDate != "" && endDate != "" && ($("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"))){
 
-          var url = "getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
+          var url = "ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
           console.log(url);
           $.ajax(url)
             .done(function(data) {
@@ -288,18 +290,21 @@ function initBill(){
                 $("#tenantCity").val($("#tenantCitySpan").html());
                 $("#tenantPhone").val($("#tenantPhoneSpan").html());
 
-                var i2 = result[10];
+                $("#stillToPay").val(result[10]);
+
+                var i2 = result[11];
                 var inputs = ""
                 for(var i = 0;i<i2;i++){
                   console.log(i);
-                  inputs += '<input type="type" name="date'+i+'" value="'+result[11+i*3]+'">';
-                  inputs += '<input type="type" name="name'+i+'" value="'+result[12+i*3]+'">';
-                  inputs += '<input type="type" name="amount'+i+'" value="'+result[13+i*3]+'">';
+                  inputs += '<input type="type" name="date'+i+'" value="'+result[12+i*3]+'">';
+                  inputs += '<input type="type" name="name'+i+'" value="'+result[13+i*3]+'">';
+                  inputs += '<input type="type" name="amount'+i+'" value="'+result[14+i*3]+'">';
                 }
                 // console.log(inputs);
                 $("#detailsList").append(inputs);
                 $("#generateBill").submit();
                 $("#detailsList").html("");
+                $("#errBill").removeClass("err");
               }
             });
 
@@ -309,6 +314,7 @@ function initBill(){
       },
       "Annuler": function() {
         $( this ).dialog( "close" );
+        $("#errBill").removeClass("err");
       }
     }
   });

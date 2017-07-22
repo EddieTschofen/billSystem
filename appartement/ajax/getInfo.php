@@ -6,21 +6,20 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
 
 $str = "";
-
+//Owner infos
 $query = 'SELECT * FROM Owner WHERE login="'.$login.'"';
 $r = $bdd->query($query)->fetch();
 for($i = 1; $i<sizeOf($r)/2 -2;$i++){
   $str .= $r[$i]."|";
 }
 
-
+//transactions infos
 $query = 'SELECT t.* FROM Transaction t, Rental r WHERE
         r.flatID="'.$flatNum.'"
         AND t.rentalID = r.id
         AND t.transactionDate >= "'.$_GET["dateStart"].'"
         AND t.transactionDate <= "'.$_GET["dateEnd"].'"
         ORDER BY transactionDate';
-
 // echo $query;
 $r = $bdd->query($query);
 $i = 0;
@@ -30,7 +29,15 @@ while($t = $r->fetch()){
   $str2 .= $t['transactionDate']."|".$t['title']."|".$t['amount']."|";
 }
 
-echo $str.$i."|".$str2;
+//stillToPay
+$query = 'SELECT SUM(t.amount) FROM Transaction t, Rental r WHERE
+          r.flatID="1"
+          AND t.rentalID = r.id
+          AND t.transactionDate < "2017/07/10"
+          ORDER BY transactionDate';
+$stp = $bdd->query($query)->fetch()[0];
+
+echo $str.$stp."|".$i."|".$str2;
 
 // for($i = 1; $i<3;$i++){
 //   echo $r[$i];
