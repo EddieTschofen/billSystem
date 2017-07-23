@@ -123,7 +123,7 @@ function initAdd(){
     }
   });
 
-  $( "#datepicker" ).datepicker({dateFormat: "yy/mm/dd"});
+  $( "#datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
   $("#nouvelleTransaction").dialog('close');
 }
 
@@ -205,7 +205,7 @@ function initEdit(){
     }
   });
 
-  $( "#datepickerEdit" ).datepicker({dateFormat: "yy/mm/dd"});
+  $( "#datepickerEdit" ).datepicker({dateFormat: "dd/mm/yy"});
   $("#editTransaction").dialog('close');
 }
 
@@ -264,7 +264,7 @@ function initBill(){
         if(numBill != "" && startDate != "" && endDate != "" && ($("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"))){
 
           var url = "ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
-          console.log(url);
+          console.log("localhost/appartement/"+url);
           $.ajax(url)
             .done(function(data) {
               if(data){
@@ -294,7 +294,7 @@ function initBill(){
                 var i2 = result[11];
                 var inputs = ""
                 for(var i = 0;i<i2;i++){
-                  console.log(i);
+                  // console.log(i);
                   inputs += '<input type="type" name="date'+i+'" value="'+result[12+i*3]+'">';
                   inputs += '<input type="type" name="name'+i+'" value="'+result[13+i*3]+'">';
                   inputs += '<input type="type" name="amount'+i+'" value="'+result[14+i*3]+'">';
@@ -318,11 +318,11 @@ function initBill(){
     }
   });
 
-  $("#num")[0].value = 540;
-  $("#datepickerBill1")[0].value = "2017/07/01";
-  $("#datepickerBill2")[0].value = "2017/07/02";
+  $("#num")[0].value = 170740;
+  $("#datepickerBill1")[0].value = "01/06/2017";
+  $("#datepickerBill2")[0].value = "31/06/2017";
 
-  $( "#datepickerBill1" ).datepicker({dateFormat: "yy/mm/dd"});
-  $( "#datepickerBill2" ).datepicker({dateFormat: "yy/mm/dd"});
+  $( "#datepickerBill1" ).datepicker({dateFormat: "dd/mm/yy"});
+  $( "#datepickerBill2" ).datepicker({dateFormat: "dd/mm/yy"});
   $("#newBill").dialog('close');
 }

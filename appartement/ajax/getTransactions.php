@@ -11,7 +11,8 @@ if(!$redirect){
     $str = "";
     while($t = $transactions->fetch()){
       $str .= "<tr>";
-      $str .= "<td class='tdBox'>".$t['transactionDate']."</td>";
+      // $str .= "<td class='tdBox'>".$t['transactionDate']."</td>";
+      $str .= "<td class='tdBox'>".implode('/', array_reverse(explode('-', $t['transactionDate'])))."</td>";
       $str .= "<td class='titleBox'>".$t['title']."</td>";
       $str .= "<td class='amountBox'>".$t['amount']."€</td>";
       $str .= "<td class='buttonBox'>";

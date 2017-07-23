@@ -9,7 +9,7 @@ if(!$redirect){
   // $rentalID = $bdd->query('SELECT * FROM Rental WHERE flatID="'.$flatNum.'"')->fetch()['id'];
   $transactionID = $_GET['id'];
   $title=$_GET['title'];
-  $date=$_GET['date'];
+  $date=implode('-', array_reverse(explode('/', $_GET['date'])));
   $amount=$_GET['amount'];
   $query = 'UPDATE Transaction SET title="'.$title.'",transactionDate="'.$date.'",amount="'.$amount.'" WHERE id="'.$transactionID.'"';
   $r = $bdd->exec($query);

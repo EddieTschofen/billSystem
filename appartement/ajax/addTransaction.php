@@ -8,7 +8,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isOwner.php';
 if(!$redirect){
   $rentalID = $bdd->query('SELECT * FROM Rental WHERE flatID="'.$flatNum.'"')->fetch()['id'];
   $title=$_GET['title'];
-  $date=$_GET['date'];
+  $date=implode('-', array_reverse(explode('/', $_GET['date'])));
   $amount=$_GET['amount'];
 
   $r = $bdd->exec('INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES ("'.$title.'",'.$rentalID.',"'.$date.'",'.$amount.')');

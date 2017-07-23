@@ -26,15 +26,16 @@ $i = 0;
 $str2 = "";
 while($t = $r->fetch()){
   $i++;
-  $str2 .= $t['transactionDate']."|".$t['title']."|".$t['amount']."|";
+  $str2 .= implode('/', array_reverse(explode('-', $t['transactionDate'])))."|".$t['title']."|".$t['amount']."|";
 }
 
 //stillToPay
 $query = 'SELECT SUM(t.amount) FROM Transaction t, Rental r WHERE
           r.flatID="'.$flatNum.'"
           AND t.rentalID = r.id
-          AND t.transactionDate < "2017/07/10"
+          AND t.transactionDate < "'.$_GET["dateStart"].'"
           ORDER BY transactionDate';
+          // echo $query;
 $stp = $bdd->query($query)->fetch()[0];
 
 echo $str.$stp."|".$i."|".$str2;
