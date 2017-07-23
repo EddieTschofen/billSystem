@@ -212,7 +212,7 @@ function initEdit(){
 var newBillForm = '\
 <div id="newBill" title="Nouvelle facture">\
   <fieldset>\
-    <form id="generateBill" action="/Old/bill.php" target="_blank">\
+    <form id="generateBill" action="bill.php" target="_blank">\
       <table>\
         <tr><td colspan ="2"><label>Numéro d\'avis d\'échéance : </label>  <input name="billNumber" type="number" min="0" id="num"></tr>\
         <tr><td><label>Periode du : </label><br/><label>  au : </label></td><td width="200px"><input name="startPeriode" type="text" id="datepickerBill1"><br/><input name="endPeriode" type="text" id="datepickerBill2"></tr>\

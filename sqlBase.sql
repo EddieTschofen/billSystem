@@ -70,7 +70,7 @@ CREATE TABLE Transaction
     title VARCHAR(255),
     rentalID int,
     transactionDate date,
-    amount float,
+    amount double,
     PRIMARY KEY (id),
     FOREIGN KEY (rentalID) REFERENCES Rental (id)
 );

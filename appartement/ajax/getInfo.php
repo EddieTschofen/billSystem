@@ -17,8 +17,8 @@ for($i = 1; $i<sizeOf($r)/2 -2;$i++){
 $query = 'SELECT t.* FROM Transaction t, Rental r WHERE
         r.flatID="'.$flatNum.'"
         AND t.rentalID = r.id
-        AND t.transactionDate >= "'.$_GET["dateStart"].'"
-        AND t.transactionDate <= "'.$_GET["dateEnd"].'"
+        AND t.transactionDate >= "'.implode('-', array_reverse(explode('/', $_GET["dateStart"]))).'"
+        AND t.transactionDate <= "'.implode('-', array_reverse(explode('/', $_GET["dateEnd"]))).'"
         ORDER BY transactionDate';
 // echo $query;
 $r = $bdd->query($query);
@@ -33,7 +33,7 @@ while($t = $r->fetch()){
 $query = 'SELECT SUM(t.amount) FROM Transaction t, Rental r WHERE
           r.flatID="'.$flatNum.'"
           AND t.rentalID = r.id
-          AND t.transactionDate < "'.$_GET["dateStart"].'"
+          AND t.transactionDate < "'.implode('-', array_reverse(explode('/', $_GET["dateStart"]))).'"
           ORDER BY transactionDate';
           // echo $query;
 $stp = $bdd->query($query)->fetch()[0];
