@@ -9,6 +9,8 @@
   }
   unset($_SESSION["user"]);
   unset($_SESSION["key"]);
+  unset($_COOKIE["billUser"]);
+  unset($_COOKIE["billKey"]);
 
   echo 'You have cleaned session';
   header('Location: /login/');

@@ -19,7 +19,10 @@
     }
     // create session in database
     $bdd->query('INSERT INTO Sessions (sessNumber,userID) VALUES ("'.$_SESSION['key'].'","'.$_SESSION['user'].'")')->fetch();
-    // redirect home
+    // create cookie
+    setcookie("billUser",$_SESSION['user'],time()+60*60*24*7,'/');
+    setcookie("billKey",$_SESSION['key'],time()+60*60*24*7,'/');
+    //redirect
     header('Location: /');
   }
   else{

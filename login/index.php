@@ -3,6 +3,15 @@
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
 session_start();
 
+// if no sessions var then check cookie
+// var_dump($_COOKIE);
+// echo "<br/>";
+// var_dump($_SESSION);
+if($_SESSION['user'] == "" && $_SESSION['key'] == ""){
+  $_SESSION['user'] = $_COOKIE['billUser'];
+  $_SESSION['key'] = $_COOKIE['billKey'];
+}
+
 $loged = $bdd->query('SELECT * FROM Sessions where userID="'.$_SESSION['user'].'" and sessNumber="'.$_SESSION['key'].'"');
 if($loged->fetch()){
   header('Location: /');

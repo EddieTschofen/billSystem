@@ -1,6 +1,10 @@
 <?php
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
+  // session_start();
+  // var_dump($_COOKIE);
+  // echo "<br/>";
+  // var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
