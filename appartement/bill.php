@@ -1,4 +1,6 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
+require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
 // var_dump($_GET);
 // if(1){
 //   for($i = 0;$i<sizeOf($_GET);$i++){
@@ -181,35 +183,30 @@ $pdf->Cell(13,10,utf8_decode($_GET['ownerBIC']));
 
 /*LAST PAYMENT*/
 $pdf->SetFont('Arial','',10);
-if($_GET['lastAmount'] > 0){
-  $pdf->SetXY(110,250);
-  $pdf->Cell(13,10,utf8_decode("Dernier " . $_GET['lastType'] . " le : " . $_GET['lastDate'] . " de " . $_GET['lastAmount'] . ' euros' ));
-  $pdf->SetXY(110,255);
-  $pdf->Cell(13,10,utf8_decode($_GET['lastBankName']));
-  $pdf->SetXY(110,260);
-  $pdf->Cell(13,10,utf8_decode($_GET['lastTenantIBAN']));
-  $pdf->SetXY(110,265);
-  $pdf->Cell(13,10,utf8_decode($_GET['lastTenantBIC']));
+
+if($_GET['paymentInfo'] != ""){
+  $pdf->Rect(110,245,90,35);
+
+  $pdf->SetXY(110,245);
+  $pdf->MultiCell(190,5,utf8_decode($_GET['paymentInfo']));
 }
-else if($_GET['lastType'] == "virementSepa"){
-  $pdf->SetXY(110,250);
-  $pdf->Cell(13,10,utf8_decode("Dernier virement : Virement SEPA par mobile"));
-}
-else{
-  $pdf->SetXY(110,250);
-  $pdf->Cell(13,10,utf8_decode("Dernier " . $_GET['lastType'] . " : Référence non transmise"));
+
+if($_GET['save']){
+  $query = 'INSERT INTO Bill (rentalID,billNumber,startPeriode,endPeriode,editDate,ownerName,ownerAddress,ownerZip,ownerCity,ownerPhone,ownerCell,ownerMail,bankName,ownerIBAN,ownerBIC,flatNumber,tenantName,tenantAddress,tenantZip,tenantCity,tenantPhone,stillToPay,transactions,comment,paymentInfo) VALUES
+  ("'.$_GET['rentalID'].'","'.$_GET['billNumber'].'","'.$_GET['startPeriode'].'","'.$_GET['endPeriode'].'","'.date('d/m/o').'",
+  "'.$_GET['ownerName'].'","'.$_GET['ownerAddress'].'","'.$_GET['ownerZip'].'","'.$_GET['ownerCity'].'","'.$_GET['ownerPhone'].'","'.$_GET['ownerCell'].'","'.$_GET['ownerMail'].'",
+  "'.$_GET['bankName'].'","'.$_GET['ownerIBAN'].'","'.$_GET['ownerBIC'].'",
+  "'.$_GET['flatNumber'].'","'.$_GET['tenantName'].'","'.$_GET['tenantAddress'].'","'.$_GET['tenantZip'].'","'.$_GET['tenantCity'].'","'.$_GET['tenantPhone'].'",
+  "'.$_GET['stillToPay'].'","'.$transactions.'","'.$_GET['comment'].'","'.$_GET['paymentInfo'].'")
+  ';
+
+  $q = $bdd->exec($query);
+
+
+  // echo $query;
 }
 
 
-$query = 'INSERT INTO Owner (billNumber,startPeriode,endPeriode,editDate,ownerName,ownerAddress,ownerZip,ownerCity,ownerPhone,ownerCell,ownerMail,bankName,ownerIBAN,ownerBIC,flatNumber,tenantName,tenantAddress,tenantZip,tenantCity,tenantPhone,stillToPay,transactions,comment) VALUES
-("'.$_GET['billNumber'].'","'.$_GET['startPeriode.'].'","'.$_GET['endPeriode'].'","'.date('d/m/o').'",
-"'.$_GET['ownerName'].'","'.$_GET['ownerAddress'].'","'.$_GET['ownerZip'].'","'.$_GET['ownerCity'].'","'.$_GET['ownerPhone'].'","'.$_GET['ownerCell'].'","'.$_GET['ownerMail'].'",
-"'.$_GET['bankName'].'","'.$_GET['ownerIBAN'].'","'.$_GET['ownerBIC'].'",
-"'.$_GET['flatNumber'].'","'.$_GET['tenantName'].'","'.$_GET['tenantAddress'].'","'.$_GET['tenantZip'].'","'.$_GET['tenantCity'].'","'.$_GET['tenantPhone'].'",
-"'.$_GET['stillToPay'].'","'.$transactions.'","'.$_GET['comment'].'")
-';
-
-// $pdf->Output();
+$pdf->Output();
 // var_dump($_GET);
-echo $query;
 ?>

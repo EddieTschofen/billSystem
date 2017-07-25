@@ -1,6 +1,6 @@
 <?php
 //nav menu on top of pages
-$name = $bdd->query('SELECT Owner.login FROM Sessions,Owner where Sessions.userID="'.$_SESSION['user'].'" and Sessions.userID=Owner.id')->fetch()['login'];
+$name = $bdd->query('SELECT Owner.login FROM Session,Owner where Session.userID="'.$_SESSION['user'].'" and Session.userID=Owner.id')->fetch()['login'];
 echo '
 <ul>
   <li><a class="active" href="/">Home</a></li>

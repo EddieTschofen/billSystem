@@ -38,7 +38,11 @@ $query = 'SELECT SUM(t.amount) FROM Transaction t, Rental r WHERE
           // echo $query;
 $stp = $bdd->query($query)->fetch()[0];
 
-echo $str.$stp."|".$i."|".$str2;
+//rentalID
+$query = 'SELECT * FROM Rental WHERE flatID="'.$flatNum.'" and ended=false';
+$rentalID = $bdd->query($query)->fetch()['id'];
+
+echo $str.$stp."|".$i."|".$str2.$rentalID;
 
 // for($i = 1; $i<3;$i++){
 //   echo $r[$i];

@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS Sessions;
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Bill;
+DROP TABLE IF EXISTS Session;
 
 DROP TABLE IF EXISTS Transaction;
 DROP TABLE IF EXISTS Rental;
@@ -74,7 +74,7 @@ CREATE TABLE Transaction
     PRIMARY KEY (id),
     FOREIGN KEY (rentalID) REFERENCES Rental (id)
 );
-CREATE TABLE Sessions
+CREATE TABLE Session
 (
   id INTEGER NOT NULL AUTO_INCREMENT,
   sessNumber VARCHAR(255),
@@ -82,12 +82,43 @@ CREATE TABLE Sessions
   PRIMARY KEY (id),
   FOREIGN KEY (userID) REFERENCES Owner (id)
 );
+CREATE TABLE Bill
+(
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  rentalID int,
+  billNumber VARCHAR(255),
+  startPeriode VARCHAR(255),
+  endPeriode VARCHAR(255),
+  editDate VARCHAR(255),
+  ownerName VARCHAR(255),
+  ownerAddress VARCHAR(255),
+  ownerZip VARCHAR(255),
+  ownerCity VARCHAR(255),
+  ownerPhone VARCHAR(255),
+  ownerCell VARCHAR(255),
+  ownerMail VARCHAR(255),
+  bankName VARCHAR(255),
+  ownerIBAN VARCHAR(255),
+  ownerBIC VARCHAR(255),
+  flatNumber VARCHAR(255),
+  tenantName VARCHAR(255),
+  tenantAddress VARCHAR(255),
+  tenantZip VARCHAR(255),
+  tenantCity VARCHAR(255),
+  tenantPhone VARCHAR(255),
+  stillToPay VARCHAR(255),
+  transactions VARCHAR(255),
+  comment VARCHAR(255),
+  paymentInfo VARCHAR(255),
+  PRIMARY KEY (id),
+  FOREIGN KEY (rentalID) REFERENCES Rental (id)
+);
 
 -- Owner table content
 
 INSERT INTO Owner (name,address,city,zip,email,phone,cell,bankName,IBAN,BIC,login,password) VALUES
-    ("Didier Tschofen","7, Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","04 76 98 06 62","06 13 71 26 37","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","didieryat","098f6bcd4621d373cade4e832627b4f6"), -- test
-    ("Bernard Tschofen","","","","bernardesf@hotmail.fr","","","","","","bernardesf","78d6810e1299959f3a8db157045aa926"), -- bernard
+    ("Didier Tschofen","7, Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","04 76 98 28 23","06 13 71 26 37","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","didieryat","098f6bcd4621d373cade4e832627b4f6"), -- test
+    ("Bernard Tschofen","7, Avenue du général roux","Pont de Claix","38800","bernardesf@hotmail.com","04 79 00 72 72","06 85 08 15 05","","","","bernardesf","78d6810e1299959f3a8db157045aa926"), -- bernard
     ("Christophe Tschofen","","","","btschofen@cegetel.net","","","","","","bernardesf","8805874a790757f828ce9614c8fd400a"), -- sarolufa
     ("Béatrice Tschofen","","","","beatscho@hotmail.fr","","","","","","bernardesf","098f6bcd4621d373cade4e832627b4f6"); -- test
 
@@ -112,13 +143,15 @@ INSERT INTO Flat (blockID,flat_num,ownerID) VALUES
 
 INSERT INTO Tenant (name,email,phone) VALUES
     ("Sandrine Vernay","","06 79 55 06 93"),
-    ("Jocelyne Mignerey","","06 61 09 89 23");
+    ("Jocelyne Mignerey","","06 61 09 89 23"),
+    ("Jean-Pierre Pâques","","06 84 84 74 44");
 
 -- Rental content
 
 INSERT INTO Rental (tenantID,flatID,startDate,ended) VALUES -- AAAA-MM-JJ
     (1,1,"2017-04-01",false),
-    (2,2,"2017-01-01",false);
+    (2,2,"2017-01-01",false),
+    (3,8,"2017-01-01",false);
 
 -- Transaction content
 

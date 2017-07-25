@@ -240,12 +240,18 @@ var newBillForm = '\
         \
         <input type="text" name="stillToPay" id="stillToPay" value="">\
         \
+        <input type="text" name="rentalID" id="rentalID" value="">\
+        \
         <div id="detailsList"></div>\
       </div>\
       <p style="padding-top:10px;margin:0px;" id="errBill">Tous les champs sont obligatoire (date de fin posterieur a la date de début)</p>\
       <br/>\
-      Commentaires : <br/>\
+      Commentaires : <a id="commentInfo" href="#" title=""><img width=8px src="/appartement/img/questionMark.svg.png"/></a><br/>\
       <textarea rows="6" cols="43" name="comment"></textarea> <br/>\
+      Information paiement client : <a id="paymentInfo" href="#" title=""><img width=8px src="/appartement/img/questionMark.svg.png"/></a><br/>\
+      <textarea rows="6" cols="43" name="paymentInfo"></textarea> <br/>\
+      \
+      <label><input type="checkbox" name="save" value="1"> Sauvegarder la facture ?</label><br/>\
     </form>\
   </fieldset>\
 </div>';
@@ -293,12 +299,18 @@ function initBill(){
 
                 var i2 = result[11];
                 var inputs = ""
+                var newI;
                 for(var i = 0;i<i2;i++){
                   // console.log(i);
                   inputs += '<input type="type" name="date'+i+'" value="'+result[12+i*3]+'">';
                   inputs += '<input type="type" name="name'+i+'" value="'+result[13+i*3]+'">';
                   inputs += '<input type="type" name="amount'+i+'" value="'+result[14+i*3]+'">';
+
+                  newI = 14+i*3+1;
                 }
+
+                $("#rentalID").val(result[newI]);
+
                 // console.log(inputs);
                 $("#detailsList").append(inputs);
                 $("#generateBill").submit();
@@ -324,5 +336,17 @@ function initBill(){
 
   $( "#datepickerBill1" ).datepicker({dateFormat: "dd/mm/yy"});
   $( "#datepickerBill2" ).datepicker({dateFormat: "dd/mm/yy"});
+  $( '#commentInfo' ).tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true,
+    content: 'Le contenue sera situé ici : <br/><img width=250px src="img/comment.png" />'
+  });
+  $( '#paymentInfo' ).tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true,
+    content: 'Le contenue sera situé ici : <br/><img width=250px src="img/paiement.png" />'
+  });
   $("#newBill").dialog('close');
 }

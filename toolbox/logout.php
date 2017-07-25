@@ -3,7 +3,7 @@
   //Logout
   session_start();
   if($_SESSION["user"] != ""){
-    $query = 'DELETE FROM Sessions WHERE userID="'.$_SESSION['user'].'"';
+    $query = 'DELETE FROM Session WHERE userID="'.$_SESSION['user'].'"';
     echo $query;
     $bdd->query($query);
   }
