@@ -1,0 +1,50 @@
+legend{
+  color : black;
+}
+
+a{
+  color : black;
+}
+
+a:hover{
+  color: black;
+  text-shadow:
+      2px 2px 1px #CFB565,
+      2px 3px 1px #CFB565;
+}
+
+table{
+  width: 45%;
+}
+
+.tdBox{
+  width: auto;
+}
+
+.titleBox{
+    width: auto;
+}
+
+.amountBox{
+    width: auto;
+}
+
+.buttonBox{
+  width: auto;
+}
+
+.ui-dialog{
+  width: 400px!important;
+}
+
+#nouvelleTransaction table{
+  width:100%;
+}
+
+#newBill table{
+  width:100%;
+}
+
+.err{
+  color : red;
+}

@@ -43,7 +43,7 @@
           }
           //if there is one
           else{
-            echo "<legend id=\"legendName\"><a href='/locataire/".$tenant['id']."'>".$tenant['name']."</a></legend>";
+            echo "<legend id=\"legendName\"><a href='/locataire/?id=".$tenant['id']."'>".$tenant['name']."</a></legend>";
             echo "<span id='tenantPhoneSpan'>".$tenant['phone']."</span>";
             echo "<br/><br/>";
           }?>

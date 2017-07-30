@@ -21,7 +21,7 @@ CREATE TABLE Owner
     bankName VARCHAR(50),
     IBAN VARCHAR(33),
     BIC VARCHAR(11),
-    login VARCHAR(255),
+    login VARCHAR(255) unique,
     password VARCHAR(255),
     PRIMARY KEY (id)
 );
@@ -119,8 +119,8 @@ CREATE TABLE Bill
 INSERT INTO Owner (name,address,city,zip,email,phone,cell,bankName,IBAN,BIC,login,password) VALUES
     ("Didier Tschofen","7, Avenue du général roux","Pont de Claix","38800","didiertschofen@hotmail.com","04 76 98 28 23","06 13 71 26 37","CIC VAL THORENS","FR76 1009 6182 2400 0638 1540 131","CMC1FRPP","didieryat","098f6bcd4621d373cade4e832627b4f6"), -- test
     ("Bernard Tschofen","7, Avenue du général roux","Pont de Claix","38800","bernardesf@hotmail.com","04 79 00 72 72","06 85 08 15 05","","","","bernardesf","78d6810e1299959f3a8db157045aa926"), -- bernard
-    ("Christophe Tschofen","","","","btschofen@cegetel.net","","","","","","bernardesf","8805874a790757f828ce9614c8fd400a"), -- sarolufa
-    ("Béatrice Tschofen","","","","beatscho@hotmail.fr","","","","","","bernardesf","098f6bcd4621d373cade4e832627b4f6"); -- test
+    ("Christophe Tschofen","","","","btschofen@cegetel.net","","","","","","christophe","8805874a790757f828ce9614c8fd400a"), -- sarolufa
+    ("Béatrice Tschofen","","","","beatscho@hotmail.fr","","","","FR76 1009 6182 3000 0632 8140 183","","bea","098f6bcd4621d373cade4e832627b4f6"); -- test
 
 -- Apartment_block content
 
@@ -144,14 +144,20 @@ INSERT INTO Flat (blockID,flat_num,ownerID) VALUES
 INSERT INTO Tenant (name,email,phone) VALUES
     ("Sandrine Vernay","","06 79 55 06 93"),
     ("Jocelyne Mignerey","","06 61 09 89 23"),
-    ("Jean-Pierre Pâques","","06 84 84 74 44");
+    ("Jean-Pierre Pâques","","06 84 84 74 44"),
+    ("Elodie Leiner","",""),
+    ("Severine Lavanchy","","")
+    ;
 
 -- Rental content
 
 INSERT INTO Rental (tenantID,flatID,startDate,ended) VALUES -- AAAA-MM-JJ
     (1,1,"2017-04-01",false),
     (2,2,"2017-01-01",false),
-    (3,8,"2017-01-01",false);
+    (3,8,"2017-01-01",false),
+    (4,5,"2017-04-01",false),
+    (5,6,"2017-04-01",false)
+    ;
 
 -- Transaction content
 
@@ -163,6 +169,8 @@ INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES
     ("Loyer Mai",1,"2017-05-31",473.67),
     ("Paiement loyer Mai",1,"2017-06-08",-473.67),
     ("Loyer Juin",1,"2017-06-30",473.67),
+    ("Paiement loyer Juin",1,"2017-07-07",473.67),
+
     ("Caution due",2,"2017-01-01",462.48),
     ("Loyer Janvier",2,"2017-01-31",0),
     ("Loyer Février",2,"2017-02-28",474.48),
@@ -173,7 +181,24 @@ INSERT INTO Transaction (title,rentalID,transactionDate,amount) VALUES
     ("Loyer Mai",2,"2017-05-31",474.48),
     ("Paiement loyer",2,"2017-06-14",-664.27),
     ("Loyer Juin",2,"2017-06-30",474.48),
-    ("Paiement loyer Juin",1,"2017-07-07",473.67)
+
+    ("Caution due",4,"2017-04-26",454.79),
+    ("Paiement caution",4,"2017-04-27",-454.79),
+    ("Loyer Avril",4,"2017-04-30",466.79),
+    ("Paiement loyer Avril",4,"2017-05-08",-466.79),
+    ("Loyer Mai",4,"2017-05-31",466.79),
+    ("Paiement loyer Mai",4,"2017-06-08",-466.79),
+    ("Loyer Juin",4,"2017-06-30",466.79),
+    ("Paiement loyer Juin",4,"2017-07-08",-466.79),
+
+    ("Caution due",5,"2017-05-09",460),
+    ("Paiement caution",5,"2017-05-10",-460),
+    ("Loyer Avril",5,"2017-04-30",236),
+    ("Paiement loyer Avril",5,"2017-05-05",-236),
+    ("Loyer Mai",5,"2017-05-31",472),
+    ("Paiement loyer Mai",5,"2017-06-05",-472),
+    ("Loyer Juin",5,"2017-06-30",472),
+    ("Paiement loyer Juin",5,"2017-07-05",-472)
     ;
 
 

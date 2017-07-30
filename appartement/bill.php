@@ -202,7 +202,6 @@ if($_GET['save']){
 
   $q = $bdd->exec($query);
 
-
   // echo $query;
 }
 
