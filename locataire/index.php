@@ -1,4 +1,6 @@
 <?php
+if(!isset($_GET['id'])) header('Location: /');
+
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
 require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
 ?>
@@ -18,6 +20,12 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
        require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
      ?>
       <div id='main'>
+        <?php
+          $query = "SELECT * FROM Tenant WHERE id=".$_GET['id'];
+          $tenant = $bdd->query($query)->fetch();
+          var_dump($tenant);
+
+        ?>
         <img width="100%" src="/toolbox/UC.png">
       </div>
   </body>

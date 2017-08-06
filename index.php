@@ -45,7 +45,7 @@
               //if there is one
               else{
                 // echo "<td><a href='/locataire/".$res3['id']."'>".$res3['name']."</a></td></tr>";
-                echo "<td><a href='/locataire/".$res3['id']."'><div class=\"case\">".$res3['name']."</div></a></td></tr>";
+                echo "<td><a href='/locataire/?id=".$res3['id']."'><div class=\"case\">".$res3['name']."</div></a></td></tr>";
               }
             }
           }
