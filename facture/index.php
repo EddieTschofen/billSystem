@@ -78,6 +78,9 @@
                     <td>
                       <a href="bill.php?id='.$r3['id'].'" target="_blank"><button>Voir facture</button></a>
                     </td>
+                    <td>
+                      <button type="button" class="btn btn-default" aria-label="Left Align" onclick="deleteSavedBill(\''.$r3['id'].'\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                    </td>
                   </tr>
                   ';
                 }

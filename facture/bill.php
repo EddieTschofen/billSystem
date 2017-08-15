@@ -23,8 +23,9 @@ for($i = 0;$i<sizeof($keys);$i = $i+2){
   }
 }
 // $url = $_SERVER['DOCUMENT_ROOT'].$url;
-echo $url;
-header('Location: '.$url);
+// echo $url;
+// header('Location: '.$url);
+echo '<script>window.location.href = "'.$url.'"</script>';
 
 // require $url;
 ?>
