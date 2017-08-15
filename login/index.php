@@ -33,6 +33,7 @@ if($loged->fetch()){
         <h1 id="loginTitle">Connection au systeme de facturation</h1>
         <form action="login.php" method="post">
           <input class="formInput" type="text" id="username" name="username" value="" placeholder="username"> <br/>
+          <script>document.getElementById("username").focus();</script> 
           <input class="formInput" type="password" id="password" name="password" value="" placeholder="password"> <br/>
           <input class="loginButton" type="submit" value="Se connecter">
         </form>

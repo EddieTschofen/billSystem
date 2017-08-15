@@ -38,7 +38,7 @@ function editTransaction(id,date,title,amount){
 function refreshTransaction(){
     var table = $("#transactionsTable");
     table.html("");
-    $.ajax("ajax/getTransactions.php?flat="+flatID)
+    $.ajax(localURL+"ajax/getTransactions.php?flat="+flatID)
       .done(function(data) {
         if(data === 0){
           // similar behavior as clicking on a link
@@ -64,8 +64,10 @@ function createBill(){
 }
 
 var flatID;
+var localURL;
 function init(){
   flatID = $("#flatID").html();
+  localURL = window.location.href.indexOf("?")>0 ? "" : "../";
   initAdd();
   initDell();
   initEdit();
@@ -104,7 +106,7 @@ function initAdd(){
         if(payment) amount = -1*(amount);
         // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
         if(date != "" && title != "" && amount != "" && (payable || payment)){
-          $.ajax("ajax/addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
+          $.ajax(localURL+"ajax/addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -139,7 +141,7 @@ function initDell(){
       modal: true,
       buttons: {
         "Supprimer": function() {
-          $.ajax("ajax/supprTransaction.php?id="+transactionId+"&flat="+flatID)
+          $.ajax(localURL+"ajax/supprTransaction.php?id="+transactionId+"&flat="+flatID)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -187,7 +189,7 @@ function initEdit(){
         // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
         if(date != "" && title != "" && amount != "" && (payable || payment)){
           // console.log("editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId);
-          $.ajax("ajax/editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId)
+          $.ajax(localURL+"ajax/editTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount+"&id="+transactionId)
             .done(function(data) {
               if(data){
                 refreshTransaction();
@@ -269,7 +271,7 @@ function initBill(){
         // console.log($("#datepickerBill1").datepicker("getDate") + " " + $("#datepickerBill2").datepicker("getDate") + " " + $("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"));
         if(numBill != "" && startDate != "" && endDate != "" && ($("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"))){
 
-          var url = "ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
+          var url = localURL+"ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
           console.log("localhost/appartement/"+url);
           $.ajax(url)
             .done(function(data) {

@@ -1,0 +1,7 @@
+#Fichier .htaccess
+
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^(([0-9]*))/$ ?flat=$1 [L]
+#RewriteRule ^(([0-9]*))$ ?flat=$1 [L]

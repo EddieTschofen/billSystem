@@ -1,5 +1,7 @@
 <?php
   $flatNum=$_GET['flat'];
+  if(!isset($_GET['flat'])) header('Location: /');
+
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/dbLogIn.php';
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
   require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isOwner.php';
@@ -15,7 +17,7 @@
          Appartement
       </title>
 
-      <script src="script.js"></script>
+      <script src="<?php echo $localURL;?>script.js"></script>
    </head>
    <body onload="init()">
       <?php

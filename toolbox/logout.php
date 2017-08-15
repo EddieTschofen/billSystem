@@ -4,7 +4,7 @@
   session_start();
   if($_SESSION["user"] != ""){
     $query = 'DELETE FROM Session WHERE userID="'.$_SESSION['user'].'"';
-    echo $query;
+    // echo $query;
     $bdd->query($query);
   }
   unset($_SESSION["user"]);
