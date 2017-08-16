@@ -214,7 +214,7 @@ function initEdit(){
 var newBillForm = '\
 <div id="newBill" title="Nouvelle facture">\
   <fieldset>\
-    <form id="generateBill" action="bill.php" target="_blank">\
+    <form id="generateBill" action="/appartement/bill.php" target="_blank">\
       <table>\
         <tr><td colspan ="2"><label>Numéro d\'avis d\'échéance : </label>  <input name="billNumber" type="number" min="0" id="num"></tr>\
         <tr><td><label>Periode du : </label><br/><label>  au : </label></td><td width="200px"><input name="startPeriode" type="text" id="datepickerBill1"><br/><input name="endPeriode" type="text" id="datepickerBill2"></tr>\
@@ -271,8 +271,11 @@ function initBill(){
         // console.log($("#datepickerBill1").datepicker("getDate") + " " + $("#datepickerBill2").datepicker("getDate") + " " + $("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"));
         if(numBill != "" && startDate != "" && endDate != "" && ($("#datepickerBill1").datepicker("getDate") < $("#datepickerBill2").datepicker("getDate"))){
 
-          var url = localURL+"ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
-          console.log("localhost/appartement/"+url);
+          // var url = localURL+"ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
+          var url = "/appartement/ajax/getInfo.php?login="+$("#login").text()+"&flat="+flatID+"&dateStart="+startDate+"&dateEnd="+endDate;
+
+          // console.log("localhost/appartement/"+url);
+          // alert(url);
           $.ajax(url)
             .done(function(data) {
               if(data){
