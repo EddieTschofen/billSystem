@@ -2,6 +2,9 @@
 body{
   color: black!important;
 }
+.invisible{
+  display: none;
+}
 
 /*NavBar*/
 ul {
@@ -63,10 +66,7 @@ li a:hover{
   font-size: 1.1em;
 }
 
-/*table*/
-
 /*Table*/
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -82,7 +82,6 @@ td, th {
 tr:nth-child(even) {
     background-color: #ddd;
 }
-
 
 td a{
   color : black;
@@ -101,8 +100,27 @@ td a:hover{
   width:100%;
 }
 
+/*Disclamer*/
+#disclamer{
+  background-color: #5e7ded;
+  width : 100%;
+  padding: 10px;
+  color: #d6d6d6;
 
+}
 
-.invisible{
-  display: none;
+#disclamer a{
+ color : #d6d6d6;
+ text-decoration: underline;
+}
+
+#disclamerButton{
+  float : right;
+
+  background-color: #5e7ded;
+  border: 1px solid white;
+  /*color: white;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }

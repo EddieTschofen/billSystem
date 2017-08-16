@@ -23,7 +23,7 @@ if($rep){
                                 BIC="'.$_POST['ownerBIC'].'"
                                 WHERE id="'.$_SESSION['user'].'"';
   $bdd->query($query);
-  header('Location: /profil/editInfo?m=ok');
+  header('Location: /profil/?m=ok');
 }
 else{
   header('Location: /profil/editInfo?m=mdp');

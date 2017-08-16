@@ -21,6 +21,7 @@
    <body>
       <?php
         require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/toolbox/disclamer.php';
       ?>
       <div id='main'>
         <?php

@@ -21,6 +21,16 @@
         $profil = $bdd->query('SELECT * from Owner WHERE id="'.$_SESSION['user'].'"')->fetch();
       ?>
       <div id='main'>
+        <?php
+          //error message
+          switch ($_GET['m']) {
+            case 'ok':
+              echo "<p id='ok'>Les informations ont été modifiées</p>";
+              break;
+            default:
+              break;
+          }
+      ?>
         <table>
           <tr>
             <td>Nom d'utilisateur : </td>
