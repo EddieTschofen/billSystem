@@ -21,8 +21,8 @@ echo '
 
 <link rel="stylesheet" href="/plugin/bootstrap-3.3.7/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/plugin/bootstrap-3.3.7/css/bootstrap-select.min.css"/>
-<link rel="stylesheet" href="/mainStyle.css">
-<link rel="stylesheet" href="'.$localURL.'style.css?v=0.2">
+<link rel="stylesheet" href="/mainStyle.css?v=0.01">
+<link rel="stylesheet" href="'.$localURL.'style.css?v=0.02">
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 ';

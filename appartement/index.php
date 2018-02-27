@@ -17,14 +17,13 @@
          Appartement
       </title>
 
-      <script src="<?php echo $localURL;?>script.js"></script>
    </head>
    <body onload="init()">
       <?php
         require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
       ?>
       <div id='main'>
-newTransaction        <?php
+        <?php
             $block = $bdd->query('SELECT * from Apartment_block')->fetch();
             $tenant = $bdd->query('select * FROM Tenant WHERE id in (select tenantID FROM  Rental Where flatID="'.$flatNum.'")')->fetch();
         ?>
@@ -49,7 +48,26 @@ newTransaction        <?php
             echo "<span id='tenantPhoneSpan'>".$tenant['phone']."</span>";
             echo "<br/><br/>";
           }?>
-          <legend>Historique des transactions</legend>
+        </fielset>
+        <fieldset>
+        <legend>Nouvelle Transaction</legend>
+        <div id="nouvelleTransaction" title="Nouvelle transaction">
+            <fieldset>
+              <table>
+                <tr><td><label>Date : </label> </td><td><input type="text" id="datepicker"></tr>
+                <tr><td><label>Titre : </label></td><td> <input type="text" name="title" id="title" value=""></tr>
+                <tr><td><label>Montant : </label></td><td> <input type="number" min="0" name="amount" id="amount" value=""></tr>
+                <tr><td colspan=2><input type="radio" id="payable" name="transactionType" value="creance">
+                Créance <input type="radio" id="payment" name="transactionType" value="payment"> Paiement</tr>
+              </table>
+              <p style="padding-top:10px;margin:0px;" id="err">Tous les champs sont obligatoire</p>
+              <button onclick="addTransaction()" >Ajouter transaction</button>
+            </fieldset>
+          </div>
+        </fieldset>
+        <br/>
+        <fieldset>
+          <legend>Transactions</legend>
           <button onclick="createBill()">Générer  facture</button> <br/><br/><br/>
           <button onclick="addTransaction()">Ajouter Transaction pour cet appartement</button>
           <button onclick="addMonthlyClaim()">Créance mensuel pour cet appartement</button>
@@ -59,4 +77,6 @@ newTransaction        <?php
         </fieldset>
       </div>
   </body>
+
+  <script src="<?php echo $localURL;?>script.js?v=0.01"></script>
 </html>
