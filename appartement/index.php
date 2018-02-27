@@ -24,7 +24,7 @@
         require $_SERVER['DOCUMENT_ROOT'].'/toolbox/head.php';
       ?>
       <div id='main'>
-        <?php
+newTransaction        <?php
             $block = $bdd->query('SELECT * from Apartment_block')->fetch();
             $tenant = $bdd->query('select * FROM Tenant WHERE id in (select tenantID FROM  Rental Where flatID="'.$flatNum.'")')->fetch();
         ?>
@@ -50,12 +50,13 @@
             echo "<br/><br/>";
           }?>
           <legend>Historique des transactions</legend>
+          <button onclick="createBill()">Générer  facture</button> <br/><br/><br/>
+          <button onclick="addTransaction()">Ajouter Transaction pour cet appartement</button>
+          <button onclick="addMonthlyClaim()">Créance mensuel pour cet appartement</button>
           <!-- transactions table -->
           <table id="transactionsTable"></table>
         <br/>
-        <button onclick="addTransaction()">Ajouter Transaction</button>
         </fieldset>
-        <button onclick="createBill()">Editer facture</button>
       </div>
   </body>
 </html>

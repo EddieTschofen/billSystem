@@ -48,3 +48,7 @@ table{
 .err{
   color : red;
 }
+
+button {
+    margin-bottom: 5px;
+}

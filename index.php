@@ -36,8 +36,8 @@
             $query2 = $bdd->query('select * FROM Flat WHERE ownerID="'.$_SESSION['user'].'" and blockID="'.$res['id'].'"');
             //for each one
             while($res2 = $query2->fetch()){
-              echo "<tr><td><a href='/appartement/".$res2['id']."/'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
-              // echo "<tr><td><a href='/appartement?flat=".$res2['id']."'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
+              //echo "<tr><td><a href='/appartement/".$res2['id']."/'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
+              echo "<tr><td><a href='/appartement?flat=".$res2['id']."'><div class=\"case\">Appartement ".$res2['flat_num']."</div></a></td>";
               //get the tenant name if there is one
               $res3 = $bdd->query('select * FROM Tenant WHERE id in (select tenantID FROM  Rental Where flatID="'.$res2['id'].'")')->fetch();
               // if there is no tenant
@@ -53,6 +53,8 @@
           }
           echo "</table>";
         ?>
+
+        <button id="addAccommodation"><a href="./addAccommodation" >Ajouter un appartement</a></button>
       </div>
   </body>
 </html>
