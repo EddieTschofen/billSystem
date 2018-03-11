@@ -24,6 +24,7 @@ echo '
 <link rel="stylesheet" href="/mainStyle.css?v=0.01">
 <link rel="stylesheet" href="'.$localURL.'style.css?v=0.10">
 
+
 <link rel="icon" type="image/png" href="/favicon.png" />
 ';
 ?>
