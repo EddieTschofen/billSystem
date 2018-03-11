@@ -1,8 +1,30 @@
+$( "#datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
+
 //on add transaction button
 function addTransaction(){
-  emptyNewTransactionDialog();
-  $("#nouvelleTransaction").dialog('open');
+    var date = $("#datepicker")[0].value;
+    var title = $("#title")[0].value;
+    var amount = $("#amount")[0].value;
+    var payable = $("#payable")[0].checked;
+    var payment = $("#payment")[0].checked;
+    if(payment) amount = -1*(amount);
+    // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
+    if(date != "" && title != "" && amount != "" && (payable || payment)) {
+        $.ajax(localURL + "ajax/addTransaction.php?flat=" + flatID + "&date=" + date + "&title=" + title + "&amount=" + amount)
+            .done(function (data) {
+                if (data) {
+                    refreshTransaction();
+                }
+            });
+    } else $("#err").addClass("err");
+
 }
+
+
+
+
+
+
 
 //on dell transaction button
 var transactionId;
@@ -68,7 +90,6 @@ var localURL;
 function init(){
   flatID = $("#flatID").html();
   localURL = window.location.href.indexOf("?")>0 ? "" : "../";
-  initAdd();
   initDell();
   initEdit();
   initBill();
@@ -77,57 +98,6 @@ function init(){
   // createBill();
 }
 
-//newTransaction dialog content
-var newTransaction = '\
-<div id="nouvelleTransaction" title="Nouvelle transaction">\
-  <fieldset>\
-    <table>\
-      <tr><td><label>Date : </label> </td><td><input type="text" id="datepicker"></tr>\
-      <tr><td><label>Titre : </label></td><td> <input type="text" name="title" id="title" value=""></tr>\
-      <tr><td><label>Montant : </label></td><td> <input type="number" min="0" name="amount" id="amount" value=""></tr>\
-      <tr><td colspan=2><input type="radio" id="payable" name="transactionType" value="creance"> \
-      Créance <input type="radio" id="payment" name="transactionType" value="payment"> Paiement</tr>\
-    </table>\
-    <p style="padding-top:10px;margin:0px;" id="err">Tous les champs sont obligatoire</p>\
-  </fieldset>\
-</div>';
-function initAdd(){
-  $("#main").append(newTransaction);
-  $("#nouvelleTransaction").dialog({
-    resizable: false,
-    modal: true,
-    buttons: {
-      "Ajouter": function() {
-        var date = $("#datepicker")[0].value;
-        var title = $("#title")[0].value;
-        var amount = $("#amount")[0].value;
-        var payable = $("#payable")[0].checked;
-        var payment = $("#payment")[0].checked;
-        if(payment) amount = -1*(amount);
-        // console.log(date + " " + title + " " + amount + " payable : " + payable + " payment : " + payment);
-        if(date != "" && title != "" && amount != "" && (payable || payment)){
-          $.ajax(localURL+"ajax/addTransaction.php?flat="+flatID+"&date="+date+"&title="+title+"&amount="+amount)
-            .done(function(data) {
-              if(data){
-                refreshTransaction();
-              }
-            });
-
-          emptyNewTransactionDialog();
-          $( this ).dialog( "close" );
-        }
-        else $("#err").addClass("err");
-      },
-      "Annuler": function() {
-        emptyNewTransactionDialog();
-        $( this ).dialog( "close" );
-      }
-    }
-  });
-
-  $( "#datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
-  $("#nouvelleTransaction").dialog('close');
-}
 
 //dellTransaction dialog content
 var dellTransaction = '\
@@ -354,4 +324,13 @@ function initBill(){
     content: 'Le contenue sera situé ici : <br/><img width=250px src="img/paiement.png" />'
   });
   $("#newBill").dialog('close');
+}
+
+
+function transactionFieldset(bool){
+  if(bool)
+    $("#trans").css("display","block");
+  else
+    $("#trans").css("display","none");
+
 }

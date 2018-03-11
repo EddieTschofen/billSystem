@@ -1,0 +1,25 @@
+.block_detail{
+    padding-left: 10px;
+    padding-top: 2px;
+    color: grey;
+    font-size: 12px;
+    display: none;
+}
+
+.blocksFlat{
+    display: block;
+}
+
+input{
+    width: 50px;
+    margin-left: 20px;
+}
+
+#newBlockForm{
+    display: none;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+#newBlockForm input{
+    width: 300px;
+}

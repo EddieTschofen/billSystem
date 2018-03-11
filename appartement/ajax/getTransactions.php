@@ -7,7 +7,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isOwner.php';
 
 if(!$redirect){
     // $transactions = $bdd->query('SELECT * FROM Transaction ORDER BY transactionDate');
-    $transactions = $bdd->query('SELECT t.* FROM Transaction t, Rental r WHERE r.flatID="'.$flatNum.'" AND t.rentalID = r.id ORDER BY transactionDate');
+    $transactions = $bdd->query('SELECT t.* FROM Transaction t, Rental r WHERE r.flatID="'.$flatNum.'" AND t.rentalID = r.id ORDER BY transactionDate DESC');
     $str = "";
     while($t = $transactions->fetch()){
       $str .= "<tr>";

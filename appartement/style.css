@@ -38,7 +38,7 @@ table{
 }
 
 #nouvelleTransaction table{
-  width:100%;
+  width:50%;
 }
 
 #newBill table{
@@ -47,4 +47,12 @@ table{
 
 .err{
   color : red;
+}
+
+button {
+    margin-bottom: 5px;
+}
+
+#trans{
+    display: none;
 }

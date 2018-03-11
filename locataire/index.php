@@ -23,10 +23,12 @@ require $_SERVER['DOCUMENT_ROOT'].'/toolbox/isAuth.php';
         <?php
           $query = "SELECT * FROM Tenant WHERE id=".$_GET['id'];
           $tenant = $bdd->query($query)->fetch();
-          var_dump($tenant);
-
+//          var_dump($tenant);
         ?>
-        <img width="100%" src="/toolbox/UC.png">
+      <fieldset>
+          <legend id="legendBlock"><?php echo $tenant['name'] ?></legend>
+<!--        <img width="100%" src="/toolbox/UC.png">-->
+      </fieldset>
       </div>
   </body>
 </html>

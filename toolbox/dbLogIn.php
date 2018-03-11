@@ -6,5 +6,10 @@ if($_SERVER['HTTP_HOST'] == "localhost"){
 else{
   $host_name = "db692906303.db.1and1.com";$database = "db692906303";$user_name = "dbo692906303";$password = 'Eddie38640';
 }
-$bdd = new PDO('mysql:host='.$host_name.';dbname='.$database.';charset=utf8', $user_name, $password);
+
+try{
+	$bdd = new PDO('mysql:host='.$host_name.';dbname='.$database.';charset=utf8', $user_name, $password);
+} catch (Exception $e) {
+    echo 'Exception reçue : ',  $e->getMessage(), "\n";
+}
 ?>
